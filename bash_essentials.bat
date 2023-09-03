@@ -36,3 +36,6 @@ $memorySpeeds
 # Endereço IP da máquina
 $ipAddress = (Test-Connection -ComputerName $env:COMPUTERNAME -Count 1).IPV4Address.IPAddressToString
 Write-Host "Endereço IP da máquina: $ipAddress"
+
+# exibir as redes Wi-Fi em alcance
+netsh wlan show network
