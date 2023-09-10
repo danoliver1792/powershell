@@ -39,3 +39,10 @@ Write-Host "Endereço IP da máquina: $ipAddress"
 
 # exibir as redes Wi-Fi em alcance
 netsh wlan show network
+
+# Verificar armazenamento
+Get-PSDrive -PSProvider FileSystem | Where-Object { $_.Name -eq 'C' } | Select-Object -Property Used, Free
+
+# Listando programas instalados com informações, versão, data, local, tamanho estimado e cache do pacote
+Get-WmiObject -Class Win32_Product | Sort-Object -Property Name | Format-Table Name, Version, InstallDate, InstallLocation, PackageCache, @{Name="Size (MB)";Expression={$_.EstimatedSize / 1MB}} -AutoSize
+
